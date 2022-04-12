@@ -1,0 +1,27 @@
+{
+    "name": "teamprofilegenerator",
+    "version": "1.0.0",
+    "description": "Generator of team profile",
+    "main": "index.js",
+    "directories": {
+        "lib": "lib",
+        "test": "test"
+    },
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type":"git",
+        "url":"git+https://github.com/wangheer2010/TeamProfileGenerator.git"
+    },
+    "author": "Chen Wang",
+    "license": "ISC",
+    "bugs": {
+        "url":"https://github.com/wangheer2010/TeamProfileGenerator/issues"
+    },
+    "home[age": "https://github.com/wangheer2010/TeamProfileGenerator#readme",
+    "dependencies": {
+        "inquirer":"^8.2.2",
+        "jest": "^26.6.3"
+    }
+}
