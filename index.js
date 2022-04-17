@@ -12,7 +12,7 @@ const promptManager = () => {
         {
             type:'input',
             name:'name',
-            message:'Please enter the name of the employee',
+            message:'Please enter the name of the manager',
             validate: inputName => {
                 if (inputName) {
                     return true;
@@ -25,7 +25,7 @@ const promptManager = () => {
         {
             type:'input',
             name:'id',
-            message:'Please enter the id of the employee',
+            message:'Please enter the id of the manager',
             validate: inputId => {
                 if (inputId) {
                     return true;
@@ -38,7 +38,7 @@ const promptManager = () => {
         {
             type:'input',
             name:'email',
-            message:'Please enter the email of the employee',
+            message:'Please enter the email of the manager',
             validate: inputEmail => {
                 if (inputEmail) {
                     return true;
@@ -51,7 +51,7 @@ const promptManager = () => {
         {
             type:'input',
             name:'officeNumber',
-            message:'Please enter the office number of the employee',
+            message:'Please enter the office number of the manager',
             validate: inputOfficeNumber => {
                 if (inputOfficeNumber) {
                     return true;
@@ -65,24 +65,39 @@ const promptManager = () => {
         console.log(answerArray);
         const manager = new Manager(answerArray.name, answerArray.id, answerArray.email, answerArray.officeNumber);
         teamArray.push(manager); 
+        promptElse();
     })
 }
 
+const promptElse = () => {
+    return inquirer.prompt([
+        {
+            type:'list',
+            name:'otherMember',
+            message:'Do you have other people on your team?',
+            choices:['Yes','No']
+        }
+    ]).then(selected => {
+        if (selected.otherMember == "Yes") {
+            promptOther();
+        } else {
+            completeTeam();
+        }
+    })
+};
 const promptOther = () => {
     return inquirer.prompt([
         {
             type:'list',
             name:'role',
             message:'What else role you want to add to your team?',
-            choices:['Engineer','Intern','Nobody']
+            choices:['Engineer','Intern']
         }
     ]).then(selected => {
         if (selected.role == "Engineer") {
             promptEngineer();
-        } if (selected.role = "Intern") {
+        } else if (selected.role == "Intern") {
             promptIntern();
-        } else {
-            completeTeam();
         }
     })
 };
@@ -148,6 +163,7 @@ const promptEngineer = () => {
         console.log(answerArray);
         const engineer = new Engineer(answerArray.name, answerArray.id, answerArray.email, answerArray.gitHub);
         teamArray.push(engineer); 
+        promptElse();
     })
 
 }
@@ -213,6 +229,7 @@ const promptIntern = () => {
         console.log(answerArray);
         const intern = new Intern(answerArray.name, answerArray.id, answerArray.email, answerArray.school);
         teamArray.push(intern); 
+        promptElse();
     })
     
 }
@@ -221,5 +238,8 @@ const completeTeam = () => {
     console.log(`
     Completing the construction of a team!
     `);
+    fs.writeFileSync('./dist/index.html', generateHTML(teamArray),'utf-8');
 }
+
+promptManager();
 
