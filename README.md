@@ -11,7 +11,7 @@
   - [Questions](#questions)
 
   ## Description
-  This application is designed for generating team profiles, with info including name, employee id, email, role, etc. For special roles (managers, engineers, interns), it will contain additional information for each of them
+  This application is designed for generating team profiles, with info including name, employee id, email, role, etc. For special roles (managers, engineers, interns), it will contain additional information for each of them.
   ## Installation
   You need to clone or download this repo and then run node index.js
   ## Usage
