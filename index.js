@@ -91,6 +91,64 @@ const promptEngineer = () => {
     console.log(`
     Adding an engineer
     `);
+    return inquirer.prompt([
+        {
+            type:'input',
+            name:'name',
+            message:'Please enter the name of the employee',
+            validate: inputName => {
+                if (inputName) {
+                    return true;
+                } else {
+                    console.log('No name is entered')
+                    return false;
+                }
+            }
+        },
+        {
+            type:'input',
+            name:'id',
+            message:'Please enter the id of the employee',
+            validate: inputId => {
+                if (inputId) {
+                    return true;
+                } else {
+                    console.log('No id is entered')
+                    return false;
+                }
+            }
+        },
+        {
+            type:'input',
+            name:'email',
+            message:'Please enter the email of the employee',
+            validate: inputEmail => {
+                if (inputEmail) {
+                    return true;
+                } else {
+                    console.log('No Email is entered')
+                    return false;
+                }
+            }
+        },
+        {
+            type:'input',
+            name:'gitHub',
+            message:'Please enter the gitHub of the employee',
+            validate: gitHub => {
+                if (gitHub) {
+                    return true;
+                } else {
+                    console.log('No gitHub is entered')
+                    return false;
+                }
+            }
+        },
+    ]).then(answerArray => {
+        console.log(answerArray);
+        const engineer = new Engineer(answerArray.name, answerArray.id, answerArray.email, answerArray.gitHub);
+        teamArray.push(engineer); 
+    })
 
 }
 
@@ -98,6 +156,64 @@ const promptIntern = () => {
     console.log(`
     Adding an intern
     `);
+    return inquirer.prompt([
+        {
+            type:'input',
+            name:'name',
+            message:'Please enter the name of the employee',
+            validate: inputName => {
+                if (inputName) {
+                    return true;
+                } else {
+                    console.log('No name is entered')
+                    return false;
+                }
+            }
+        },
+        {
+            type:'input',
+            name:'id',
+            message:'Please enter the id of the employee',
+            validate: inputId => {
+                if (inputId) {
+                    return true;
+                } else {
+                    console.log('No id is entered')
+                    return false;
+                }
+            }
+        },
+        {
+            type:'input',
+            name:'email',
+            message:'Please enter the email of the employee',
+            validate: inputEmail => {
+                if (inputEmail) {
+                    return true;
+                } else {
+                    console.log('No Email is entered')
+                    return false;
+                }
+            }
+        },
+        {
+            type:'input',
+            name:'school',
+            message:'Please enter the school of the employee',
+            validate: school => {
+                if (school) {
+                    return true;
+                } else {
+                    console.log('No school is entered')
+                    return false;
+                }
+            }
+        },
+    ]).then(answerArray => {
+        console.log(answerArray);
+        const intern = new Intern(answerArray.name, answerArray.id, answerArray.email, answerArray.school);
+        teamArray.push(intern); 
+    })
     
 }
 
