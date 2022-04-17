@@ -68,3 +68,42 @@ const promptManager = () => {
     })
 }
 
+const promptOther = () => {
+    return inquirer.prompt([
+        {
+            type:'list',
+            name:'role',
+            message:'What else role you want to add to your team?',
+            choices:['Engineer','Intern','Nobody']
+        }
+    ]).then(selected => {
+        if (selected.role == "Engineer") {
+            promptEngineer();
+        } if (selected.role = "Intern") {
+            promptIntern();
+        } else {
+            completeTeam();
+        }
+    })
+};
+
+const promptEngineer = () => {
+    console.log(`
+    Adding an engineer
+    `);
+
+}
+
+const promptIntern = () => {
+    console.log(`
+    Adding an intern
+    `);
+    
+}
+
+const completeTeam = () => {
+    console.log(`
+    Completing the construction of a team!
+    `);
+}
+
